@@ -1,0 +1,34 @@
+{
+  "queryset": {
+    "version": "1.0.0",
+    "dataSources": [
+      {
+        "id": "67cf0824-2a96-4b28-baaf-9465199a61a7",
+        "clusterUri": "",
+        "type": "Fabric",
+        "databaseItemId": "1cebd4b5-b4bc-b268-4f96-d7f673bffb41",
+        "databaseItemName": "Eventhouse_2ndLab"
+      }
+    ],
+    "tabs": [
+      {
+        "id": "0c67c3c2-c25d-46c5-be91-60d36d67509e",
+        "content": "//***********************************************************************************************************\n// Here are two articles to help you get started with KQL:\n// KQL reference guide - https://aka.ms/KQLguide\n// SQL - KQL conversions - https://aka.ms/sqlcheatsheet\n//***********************************************************************************************************\n\n// Use \"take\" to view a sample number of records in the table and check the data.\nYOUR_TABLE_HERE\n| take 100\n\n// See how many records are in the table.\nYOUR_TABLE_HERE\n| count\n\n// This query returns the number of ingestions per hour in the given table.\nYOUR_TABLE_HERE\n| summarize IngestionCount = count() by bin(ingestion_time(), 1h)\n\n",
+        "title": "Tab",
+        "dataSourceId": "67cf0824-2a96-4b28-baaf-9465199a61a7"
+      },
+      {
+        "id": "087d1c48-5af6-4db9-b74f-7a6e7a94d04b",
+        "content": "// Use 'take' to view a sample number of records in the table and check the data.\nbicycle\n| take 100\n\n\n // See the most recent data - records ingested in the last 24 hours.\nbicycle\n | where ingestion_time() between (now(-1d) .. now())",
+        "title": "",
+        "dataSourceId": "67cf0824-2a96-4b28-baaf-9465199a61a7"
+      },
+      {
+        "id": "b8903434-27ea-4b0a-bef4-da3c7927ff33",
+        "content": "// Use 'take' to view a sample number of records in the table and check the data.\n['bike-by-street']\n| take 100\n",
+        "title": "",
+        "dataSourceId": "67cf0824-2a96-4b28-baaf-9465199a61a7"
+      }
+    ]
+  }
+}

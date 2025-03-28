@@ -1,11 +1,12 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
   "metadata": {
-    "type": "Lakehouse",
-    "displayName": "newLH"
+    "type": "KQLDashboard",
+    "displayName": "Realtime_dashboard",
+    "description": "Realtime_dashboard"
   },
   "config": {
     "version": "2.0",
-    "logicalId": "dcedcf91-20f4-beb6-45b8-b7d07b88f118"
+    "logicalId": "4312c21c-6f04-b7d6-4de5-9280444bde4d"
   }
 }
