@@ -1,0 +1,40 @@
+{
+  "queryset": {
+    "version": "1.0.0",
+    "dataSources": [
+      {
+        "id": "744e20bf-375f-4f76-a36c-cf3b53291a61",
+        "clusterUri": "",
+        "type": "Fabric",
+        "databaseItemId": "e106dc53-b27c-a2ae-43be-dca8b42885fd",
+        "databaseItemName": "lab2EH"
+      }
+    ],
+    "tabs": [
+      {
+        "id": "669e7603-9330-46f4-a3e8-d74b3d04ec38",
+        "content": "//***********************************************************************************************************\n// Here are two articles to help you get started with KQL:\n// KQL reference guide - https://aka.ms/KQLguide\n// SQL - KQL conversions - https://aka.ms/sqlcheatsheet\n//***********************************************************************************************************\n\n// Use \"take\" to view a sample number of records in the table and check the data.\nYOUR_TABLE_HERE\n| take 100\n\n// See how many records are in the table.\nYOUR_TABLE_HERE\n| count\n\n// This query returns the number of ingestions per hour in the given table.\nYOUR_TABLE_HERE\n| summarize IngestionCount = count() by bin(ingestion_time(), 1h)\n\n",
+        "title": "Tab",
+        "dataSourceId": "744e20bf-375f-4f76-a36c-cf3b53291a61"
+      },
+      {
+        "id": "9cc1896a-0271-4304-83f7-9cd37a795956",
+        "content": "// Use 'take' to view a sample number of records in the table and check the data.\nbikes\n| take 100\n\n\n // See the most recent data - records ingested in the last 24 hours.\n bikes\n | where ingestion_time() between (now(-1d) .. now())",
+        "title": "",
+        "dataSourceId": "744e20bf-375f-4f76-a36c-cf3b53291a61"
+      },
+      {
+        "id": "21f36698-4ef6-4ea8-9e8f-c8be390817b1",
+        "content": "// Use 'take' to view a sample number of records in the table and check the data.\n['bikes-by-street']\n| take 100\n",
+        "title": "",
+        "dataSourceId": "744e20bf-375f-4f76-a36c-cf3b53291a61"
+      },
+      {
+        "id": "d1a5b7d8-bcb6-4792-a9fb-b72891c12824",
+        "content": "-- View a sample of 100 records in the table.\nselect top 100 * from bikes\n",
+        "title": "",
+        "dataSourceId": "744e20bf-375f-4f76-a36c-cf3b53291a61"
+      }
+    ]
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "KQLDatabase",
+    "displayName": "lab2EH",
+    "description": "lab2EH"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "e106dc53-b27c-a2ae-43be-dca8b42885fd"
+  }
+}
