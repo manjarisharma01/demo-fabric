@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "KQLDatabase",
+    "displayName": "RTISample",
+    "description": "RTISample"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "0c69fd2a-ab22-a9cb-4bd0-6e2b276d57ae"
+  }
+}

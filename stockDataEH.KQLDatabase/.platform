@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "KQLDatabase",
+    "displayName": "stockDataEH",
+    "description": "stockDataEH"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "6cb90fc1-2324-8b46-4288-474108921055"
+  }
+}

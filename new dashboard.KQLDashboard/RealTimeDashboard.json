@@ -1,0 +1,95 @@
+{
+  "schema_version": "60",
+  "tiles": [
+    {
+      "id": "28d1f985-4cf9-4ccd-90cf-fb4009abfa9d",
+      "title": "AveragePrice",
+      "visualType": "column",
+      "pageId": "0e22aa2a-f4c6-44a5-bc4f-c5544ef94ea2",
+      "layout": {
+        "x": 0,
+        "y": 0,
+        "width": 9,
+        "height": 7
+      },
+      "queryRef": {
+        "kind": "query",
+        "queryId": "6e5c64a0-c482-47af-975a-c3c39407b557"
+      },
+      "visualOptions": {
+        "multipleYAxes": {
+          "base": {
+            "id": "-1",
+            "label": "",
+            "columns": [],
+            "yAxisMaximumValue": null,
+            "yAxisMinimumValue": null,
+            "yAxisScale": "linear",
+            "horizontalLines": []
+          },
+          "additional": [],
+          "showMultiplePanels": false
+        },
+        "hideLegend": false,
+        "legendLocation": "bottom",
+        "xColumnTitle": "",
+        "xColumn": null,
+        "yColumns": null,
+        "seriesColumns": null,
+        "xAxisScale": "linear",
+        "verticalLine": "",
+        "crossFilter": [],
+        "crossFilterDisabled": false,
+        "drillthroughDisabled": false,
+        "drillthrough": []
+      }
+    }
+  ],
+  "baseQueries": [],
+  "parameters": [
+    {
+      "kind": "duration",
+      "id": "e40783ab-c30d-47c5-a4b5-581458694a0a",
+      "displayName": "Time range",
+      "description": "",
+      "beginVariableName": "_startTime",
+      "endVariableName": "_endTime",
+      "defaultValue": {
+        "kind": "dynamic",
+        "count": 1,
+        "unit": "hours"
+      },
+      "showOnPages": {
+        "kind": "all"
+      }
+    }
+  ],
+  "dataSources": [
+    {
+      "id": "4ab13214-0c63-4f89-8120-72b2c1120340",
+      "kind": "kusto-trident",
+      "scopeId": "kusto-trident",
+      "clusterUri": "",
+      "database": "6cb90fc1-2324-8b46-4288-474108921055",
+      "name": "stockDataEH",
+      "workspace": "00000000-0000-0000-0000-000000000000"
+    }
+  ],
+  "pages": [
+    {
+      "name": "Page 1",
+      "id": "0e22aa2a-f4c6-44a5-bc4f-c5544ef94ea2"
+    }
+  ],
+  "queries": [
+    {
+      "dataSource": {
+        "kind": "inline",
+        "dataSourceId": "4ab13214-0c63-4f89-8120-72b2c1120340"
+      },
+      "text": " stock\n | where [\"time\"] > ago(5m)\n | summarize avgPrice = avg(todecimal(bidPrice)) by symbol\n | project symbol, avgPrice",
+      "id": "6e5c64a0-c482-47af-975a-c3c39407b557",
+      "usedVariables": []
+    }
+  ]
+}

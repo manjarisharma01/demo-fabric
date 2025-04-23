@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "KQLDashboard",
+    "displayName": "new dashboard",
+    "description": "new dashboard"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "afa839fc-f087-8ed9-45f5-05af2d884a19"
+  }
+}
