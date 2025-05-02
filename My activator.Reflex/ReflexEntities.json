@@ -1,0 +1,154 @@
+[
+  {
+    "uniqueIdentifier": "b5d3f1df-4df3-4aec-9997-2ab88535fef8",
+    "payload": {
+      "name": "RTdashboard",
+      "type": "kqlQueries"
+    },
+    "type": "container-v1"
+  },
+  {
+    "uniqueIdentifier": "5788c617-2f53-4a7d-8e8b-1c1fa9c9809a",
+    "payload": {
+      "name": "myeventhouse event",
+      "runSettings": {
+        "executionIntervalInSeconds": 300
+      },
+      "query": {
+        "queryString": "stock\n | where [\"time\"] > ago(5m)\n | summarize avgPrice = avg(todecimal(bidPrice)) by symbol\n | project symbol, avgPrice"
+      },
+      "eventhouseItem": {
+        "itemId": "231323eb-8f3f-b34e-4095-27523469f72c",
+        "workspaceId": "00000000-0000-0000-0000-000000000000",
+        "itemType": "KustoDatabase"
+      },
+      "queryParameters": [],
+      "metadata": {
+        "workspaceId": "1dbe219e-d481-4a3a-86d5-e0a7a8db7bad",
+        "measureName": "avgPrice",
+        "dashboardId": "c0089801-655e-4354-a897-a7cb5b8d2242",
+        "visualId": "effa922b-003c-4a37-a27f-08622aa5ae1b"
+      },
+      "parentContainer": {
+        "targetUniqueIdentifier": "b5d3f1df-4df3-4aec-9997-2ab88535fef8"
+      }
+    },
+    "type": "kqlSource-v1"
+  },
+  {
+    "uniqueIdentifier": "4f66a55e-1bb2-49d2-af53-e7274c0a9789",
+    "payload": {
+      "name": "myeventhouse event",
+      "parentContainer": {
+        "targetUniqueIdentifier": "b5d3f1df-4df3-4aec-9997-2ab88535fef8"
+      },
+      "definition": {
+        "type": "Event",
+        "instance": "{\"templateId\":\"SourceEvent\",\"templateVersion\":\"1.1\",\"steps\":[{\"name\":\"SourceEventStep\",\"id\":\"5c97d39f-56d9-4ad8-be02-fe8790ff6164\",\"rows\":[{\"name\":\"SourceSelector\",\"kind\":\"SourceReference\",\"arguments\":[{\"name\":\"entityId\",\"type\":\"string\",\"value\":\"5788c617-2f53-4a7d-8e8b-1c1fa9c9809a\"}]}]}]}"
+      }
+    },
+    "type": "timeSeriesView-v1"
+  },
+  {
+    "uniqueIdentifier": "b5e77491-b340-407c-a6c3-c14f3d976a0f",
+    "payload": {
+      "name": "symbol",
+      "parentContainer": {
+        "targetUniqueIdentifier": "b5d3f1df-4df3-4aec-9997-2ab88535fef8"
+      },
+      "definition": {
+        "type": "Object"
+      }
+    },
+    "type": "timeSeriesView-v1"
+  },
+  {
+    "uniqueIdentifier": "8ebb5103-6608-4db0-a6e6-26dc116f3307",
+    "payload": {
+      "name": "symbol",
+      "parentObject": {
+        "targetUniqueIdentifier": "b5e77491-b340-407c-a6c3-c14f3d976a0f"
+      },
+      "parentContainer": {
+        "targetUniqueIdentifier": "b5d3f1df-4df3-4aec-9997-2ab88535fef8"
+      },
+      "definition": {
+        "type": "Attribute",
+        "instance": "{\"templateId\":\"IdentityPartAttribute\",\"templateVersion\":\"1.1\",\"steps\":[{\"name\":\"IdPartStep\",\"id\":\"a3172ce3-ea45-420a-9326-5c60b2721123\",\"rows\":[{\"name\":\"TypeAssertion\",\"kind\":\"TypeAssertion\",\"arguments\":[{\"name\":\"op\",\"type\":\"string\",\"value\":\"Text\"},{\"name\":\"format\",\"type\":\"string\",\"value\":\"\"}]}]}]}"
+      }
+    },
+    "type": "timeSeriesView-v1"
+  },
+  {
+    "uniqueIdentifier": "70623d2a-0e0b-4288-8549-1c742839dd78",
+    "payload": {
+      "name": "symbol tuple",
+      "parentObject": {
+        "targetUniqueIdentifier": "b5e77491-b340-407c-a6c3-c14f3d976a0f"
+      },
+      "parentContainer": {
+        "targetUniqueIdentifier": "b5d3f1df-4df3-4aec-9997-2ab88535fef8"
+      },
+      "definition": {
+        "type": "Attribute",
+        "instance": "{\"templateId\":\"IdentityTupleAttribute\",\"templateVersion\":\"1.1\",\"steps\":[{\"name\":\"IdStructureStep\",\"id\":\"4eac47f6-114e-461c-b1c1-4b4ecafc9866\",\"rows\":[{\"name\":\"IdPart\",\"kind\":\"IdPart\",\"arguments\":[{\"kind\":\"AttributeReference\",\"type\":\"complex\",\"arguments\":[{\"name\":\"entityId\",\"type\":\"string\",\"value\":\"8ebb5103-6608-4db0-a6e6-26dc116f3307\"}],\"name\":\"idPart\"}]}]}]}"
+      }
+    },
+    "type": "timeSeriesView-v1"
+  },
+  {
+    "uniqueIdentifier": "25d9d67e-68eb-43cb-8a7c-51a5efe0d776",
+    "payload": {
+      "name": "myeventhouse event by symbol",
+      "parentObject": {
+        "targetUniqueIdentifier": "b5e77491-b340-407c-a6c3-c14f3d976a0f"
+      },
+      "parentContainer": {
+        "targetUniqueIdentifier": "b5d3f1df-4df3-4aec-9997-2ab88535fef8"
+      },
+      "definition": {
+        "type": "Event",
+        "instance": "{\"templateId\":\"SplitEvent\",\"templateVersion\":\"1.1\",\"steps\":[{\"name\":\"SplitEventStep\",\"id\":\"ad816788-4f5a-47fa-8f2b-f3ad2af86f07\",\"rows\":[{\"name\":\"EventSelector\",\"kind\":\"Event\",\"arguments\":[{\"kind\":\"EventReference\",\"type\":\"complex\",\"arguments\":[{\"name\":\"entityId\",\"type\":\"string\",\"value\":\"4f66a55e-1bb2-49d2-af53-e7274c0a9789\"}],\"name\":\"event\"}]},{\"name\":\"FieldIdMapping\",\"kind\":\"FieldIdMapping\",\"arguments\":[{\"name\":\"fieldName\",\"type\":\"string\",\"value\":\"symbol\"},{\"kind\":\"AttributeReference\",\"type\":\"complex\",\"arguments\":[{\"name\":\"entityId\",\"type\":\"string\",\"value\":\"8ebb5103-6608-4db0-a6e6-26dc116f3307\"}],\"name\":\"idPart\"}]},{\"name\":\"SplitEventOptions\",\"kind\":\"EventOptions\",\"arguments\":[{\"name\":\"isAuthoritative\",\"type\":\"boolean\",\"value\":true}]}]}]}"
+      }
+    },
+    "type": "timeSeriesView-v1"
+  },
+  {
+    "uniqueIdentifier": "f2b1083f-b6fc-45ff-92d6-192d258f0d2a",
+    "payload": {
+      "name": "avgPrice",
+      "parentObject": {
+        "targetUniqueIdentifier": "b5e77491-b340-407c-a6c3-c14f3d976a0f"
+      },
+      "parentContainer": {
+        "targetUniqueIdentifier": "b5d3f1df-4df3-4aec-9997-2ab88535fef8"
+      },
+      "definition": {
+        "type": "Attribute",
+        "instance": "{\"templateId\":\"BasicEventAttribute\",\"templateVersion\":\"1.1\",\"steps\":[{\"name\":\"EventSelectStep\",\"id\":\"8232739d-61f9-4530-9ba6-5058265a015f\",\"rows\":[{\"name\":\"EventSelector\",\"kind\":\"Event\",\"arguments\":[{\"kind\":\"EventReference\",\"type\":\"complex\",\"arguments\":[{\"name\":\"entityId\",\"type\":\"string\",\"value\":\"25d9d67e-68eb-43cb-8a7c-51a5efe0d776\"}],\"name\":\"event\"}]},{\"name\":\"EventFieldSelector\",\"kind\":\"EventField\",\"arguments\":[{\"name\":\"fieldName\",\"type\":\"string\",\"value\":\"avgPrice\"}]}]},{\"name\":\"EventComputeStep\",\"id\":\"dec5ff6b-04da-45dd-ae24-1fd4c6fb4abe\",\"rows\":[{\"name\":\"TypeAssertion\",\"kind\":\"TypeAssertion\",\"arguments\":[{\"name\":\"op\",\"type\":\"string\",\"value\":\"Text\"},{\"name\":\"format\",\"type\":\"string\",\"value\":\"\"}]}]}]}"
+      }
+    },
+    "type": "timeSeriesView-v1"
+  },
+  {
+    "uniqueIdentifier": "4d35c33e-3216-4c1b-85c2-30baaf8d9926",
+    "payload": {
+      "name": "myeventhouse alert",
+      "parentObject": {
+        "targetUniqueIdentifier": "b5e77491-b340-407c-a6c3-c14f3d976a0f"
+      },
+      "parentContainer": {
+        "targetUniqueIdentifier": "b5d3f1df-4df3-4aec-9997-2ab88535fef8"
+      },
+      "definition": {
+        "type": "Rule",
+        "instance": "{\"templateId\":\"AttributeTrigger\",\"templateVersion\":\"1.1\",\"steps\":[{\"name\":\"ScalarSelectStep\",\"id\":\"b852816b-b310-4d35-9a50-b6c009842899\",\"rows\":[{\"name\":\"AttributeSelector\",\"kind\":\"Attribute\",\"arguments\":[{\"kind\":\"AttributeReference\",\"type\":\"complex\",\"arguments\":[{\"name\":\"entityId\",\"type\":\"string\",\"value\":\"f2b1083f-b6fc-45ff-92d6-192d258f0d2a\"}],\"name\":\"attribute\"}]}]},{\"name\":\"ScalarDetectStep\",\"id\":\"619f216b-06cc-40ab-a5b9-d1ab4eefabf9\",\"rows\":[{\"name\":\"NumberTrends\",\"kind\":\"NumberTrendsBy\",\"arguments\":[{\"name\":\"op\",\"type\":\"string\",\"value\":\"IncreasesByAtLeast\"},{\"name\":\"offset\",\"type\":\"number\",\"value\":100.0},{\"name\":\"inPercent\",\"type\":\"boolean\",\"value\":false}]},{\"name\":\"OccurrenceOption\",\"kind\":\"EachTime\",\"arguments\":[]}]},{\"name\":\"ActStep\",\"id\":\"8970be30-de61-4c36-adb1-213006c4571e\",\"rows\":[{\"name\":\"EmailBinding\",\"kind\":\"EmailMessage\",\"arguments\":[{\"name\":\"messageLocale\",\"type\":\"string\",\"value\":\"\"},{\"name\":\"sentTo\",\"type\":\"array\",\"values\":[{\"type\":\"string\",\"value\":\"Manjari_fabric@manjarisharma01outlook.onmicrosoft.com\"}]},{\"name\":\"copyTo\",\"type\":\"array\",\"values\":[]},{\"name\":\"bCCTo\",\"type\":\"array\",\"values\":[]},{\"name\":\"subject\",\"type\":\"array\",\"values\":[{\"type\":\"string\",\"value\":\"Activator Trigger: New event from myeventhouse alert\"}]},{\"name\":\"headline\",\"type\":\"array\",\"values\":[{\"type\":\"string\",\"value\":\"New event from myeventhouse alert\"}]},{\"name\":\"optionalMessage\",\"type\":\"array\",\"values\":[{\"type\":\"string\",\"value\":\"\"}]},{\"name\":\"additionalInformation\",\"type\":\"array\",\"values\":[]}]}]}]}",
+        "settings": {
+          "shouldRun": true,
+          "shouldApplyRuleOnUpdate": false
+        }
+      }
+    },
+    "type": "timeSeriesView-v1"
+  }
+]

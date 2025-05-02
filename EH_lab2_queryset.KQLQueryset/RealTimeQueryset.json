@@ -1,0 +1,34 @@
+{
+  "queryset": {
+    "version": "1.0.0",
+    "dataSources": [
+      {
+        "id": "c5138858-5c1f-4723-8343-ea29e84cf58e",
+        "clusterUri": "",
+        "type": "Fabric",
+        "databaseItemId": "9966c70b-6451-a5e4-4adf-8c5569584015",
+        "databaseItemName": "EH_lab2"
+      }
+    ],
+    "tabs": [
+      {
+        "id": "edd647c9-095e-461f-a3de-a957051400c7",
+        "content": "//***********************************************************************************************************\n// Here are two articles to help you get started with KQL:\n// KQL reference guide - https://aka.ms/KQLguide\n// SQL - KQL conversions - https://aka.ms/sqlcheatsheet\n//***********************************************************************************************************\n\n// Use \"take\" to view a sample number of records in the table and check the data.\nYOUR_TABLE_HERE\n| take 100\n\n// See how many records are in the table.\nYOUR_TABLE_HERE\n| count\n\n// This query returns the number of ingestions per hour in the given table.\nYOUR_TABLE_HERE\n| summarize IngestionCount = count() by bin(ingestion_time(), 1h)\n\n",
+        "title": "Tab",
+        "dataSourceId": "c5138858-5c1f-4723-8343-ea29e84cf58e"
+      },
+      {
+        "id": "4bd23255-94e9-4130-8045-250a95f0ac91",
+        "content": "// Use 'take' to view a sample number of records in the table and check the data.\nbikes\n| where ingestion_time() between (now(-1d) ..now() )\n",
+        "title": "",
+        "dataSourceId": "c5138858-5c1f-4723-8343-ea29e84cf58e"
+      },
+      {
+        "id": "513f9f33-222f-4474-af09-ce5f8d7ab151",
+        "content": " ['bikes-by-street']\n | summarize TotalBikes = sum(tolong(SUM_No_Bikes)) by Window_End_Time, Street\n | sort by Window_End_Time desc , Street asc",
+        "title": "",
+        "dataSourceId": "c5138858-5c1f-4723-8343-ea29e84cf58e"
+      }
+    ]
+  }
+}
