@@ -1,0 +1,99 @@
+{
+  "schema_version": "60",
+  "tiles": [
+    {
+      "id": "395b5a68-9d99-457a-8cdf-fedbcb65a61b",
+      "title": "avg price",
+      "visualType": "column",
+      "pageId": "b06df235-3332-40e7-bf17-890ab39b1d57",
+      "layout": {
+        "x": 0,
+        "y": 0,
+        "width": 9,
+        "height": 7
+      },
+      "queryRef": {
+        "kind": "query",
+        "queryId": "2b03cb0f-9626-4ef7-b77e-2e6372e9c0be"
+      },
+      "visualOptions": {
+        "multipleYAxes": {
+          "base": {
+            "id": "-1",
+            "label": "",
+            "columns": [],
+            "yAxisMaximumValue": null,
+            "yAxisMinimumValue": null,
+            "yAxisScale": "linear",
+            "horizontalLines": []
+          },
+          "additional": [],
+          "showMultiplePanels": false
+        },
+        "hideLegend": false,
+        "legendLocation": "bottom",
+        "xColumnTitle": "",
+        "xColumn": null,
+        "yColumns": null,
+        "seriesColumns": null,
+        "xAxisScale": "linear",
+        "verticalLine": "",
+        "crossFilter": [],
+        "crossFilterDisabled": false,
+        "drillthroughDisabled": false,
+        "drillthrough": [],
+        "selectedDataOnLoad": {
+          "all": true,
+          "limit": 10
+        }
+      }
+    }
+  ],
+  "baseQueries": [],
+  "parameters": [
+    {
+      "kind": "duration",
+      "id": "438bad66-a506-4d08-b754-8587b0b1792a",
+      "displayName": "Time range",
+      "description": "",
+      "beginVariableName": "_startTime",
+      "endVariableName": "_endTime",
+      "defaultValue": {
+        "kind": "dynamic",
+        "count": 1,
+        "unit": "hours"
+      },
+      "showOnPages": {
+        "kind": "all"
+      }
+    }
+  ],
+  "dataSources": [
+    {
+      "id": "c53166f2-8564-4fe9-96fc-8d51eb53ea76",
+      "kind": "kusto-trident",
+      "scopeId": "kusto-trident",
+      "clusterUri": "",
+      "database": "681805b5-02bf-9256-4384-a8abc9dddd81",
+      "name": "EventHouseNew",
+      "workspace": "00000000-0000-0000-0000-000000000000"
+    }
+  ],
+  "pages": [
+    {
+      "name": "Page 1",
+      "id": "b06df235-3332-40e7-bf17-890ab39b1d57"
+    }
+  ],
+  "queries": [
+    {
+      "dataSource": {
+        "kind": "inline",
+        "dataSourceId": "c53166f2-8564-4fe9-96fc-8d51eb53ea76"
+      },
+      "text": "// Use 'take' to view a sample number of records in the table and check the data.\nstock\n|where [\"time\"]> ago(5m)\n|summarize avgPrice = avg(todecimal(bidPrice)) by symbol\n|project symbol,avgPrice\n",
+      "id": "2b03cb0f-9626-4ef7-b77e-2e6372e9c0be",
+      "usedVariables": []
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "queryset": {
+    "version": "1.0.0",
+    "dataSources": [
+      {
+        "id": "957646f8-ebd6-49e7-a986-75dc5402d1fe",
+        "clusterUri": "",
+        "type": "Fabric",
+        "databaseItemId": "681805b5-02bf-9256-4384-a8abc9dddd81",
+        "databaseItemName": "EventHouseNew"
+      }
+    ],
+    "tabs": [
+      {
+        "id": "8ea96b0f-7f5d-4fa2-9c47-c82f99632de1",
+        "content": "//***********************************************************************************************************\n// Here are two articles to help you get started with KQL:\n// KQL reference guide - https://aka.ms/KQLguide\n// SQL - KQL conversions - https://aka.ms/sqlcheatsheet\n//***********************************************************************************************************\n\n// Use \"take\" to view a sample number of records in the table and check the data.\nYOUR_TABLE_HERE\n| take 100\n\n// See how many records are in the table.\nYOUR_TABLE_HERE\n| count\n\n// This query returns the number of ingestions per hour in the given table.\nYOUR_TABLE_HERE\n| summarize IngestionCount = count() by bin(ingestion_time(), 1h)\n\n",
+        "title": "Tab",
+        "dataSourceId": "957646f8-ebd6-49e7-a986-75dc5402d1fe"
+      },
+      {
+        "id": "8b8e45c7-ed3f-4cae-a2da-ec7f93c51bc5",
+        "content": "// Use 'take' to view a sample number of records in the table and check the data.\nstock\n|where [\"time\"]> ago(5m)\n|summarize avgPrice = avg(todecimal(bidPrice)) by symbol\n|project symbol,avgPrice\n",
+        "title": "",
+        "dataSourceId": "957646f8-ebd6-49e7-a986-75dc5402d1fe"
+      }
+    ]
+  }
+}
